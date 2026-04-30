@@ -19,61 +19,50 @@
 
 ## Структура проекта
 
-effective-mobile-devops/
-├── backend/
-│   ├── Dockerfile
-│   └── app.py
-├── nginx/
-│   └── nginx.conf
-├── docker-compose.yml
-├── .env
-├── .gitignore
+effective-mobile-devops/  <br>
+├── backend/  <br>
+│   ├── Dockerfile  <br>
+│   └── app.py  <br>
+├── nginx/  <br>
+│   └── nginx.conf  <br>
+├── docker-compose.yml  <br>
+├── .env  <br>
+├── .gitignore  <br>
 └── README.md
 
 ## Запуск
-
 ### 1. Клонируйте репозиторий
-
+```bash
 git clone https://github.com/<user>/effective-mobile-devops.git
 cd effective-mobile-devops
-
+```
 ### 2. Убедитесь, что порт 80 свободен
-
-На Windows:
+```bash
+#На Windows:
 netstat -ano | findstr :80
 
-На Linux:
+#На Linux:
 sudo lsof -i :80
-
+```
 Если порт занят, остановите мешающую службу.
 
 ### 3. Запустите контейнеры
-
+```bash
 docker-compose up -d
-
-### 4. Проверьте статус
-
-docker-compose ps
-
-Оба контейнера должны быть в статусе Up.
-
+```
 ## Проверка работоспособности
-
+```bash
 curl http://localhost
-
+```
 Ожидаемый ответ:
 Hello from Effective Mobile!
 
 ## Просмотр логов
-
+```bash
 docker logs effective-mobile-backend
 docker logs effective-mobile-nginx
 docker-compose logs -f
-
-## Остановка
-
-docker-compose down
-
+```
 ## Особенности реализации
 
 - Безопасность: backend контейнер работает от непривилегированного пользователя (appuser)
